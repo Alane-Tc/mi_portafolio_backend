@@ -48,7 +48,24 @@ namespace Mi_portafolio.Controllers
                 urlImage = "https://s.udemycdn.com/meta/default-meta-image-v2.png",
                 typeOfCertificate = TypeOfCertificate.Udemy
             },
-
+                  new Certificates
+            {
+                id = 5,
+                nameCertificate = "Programación desde cero",
+                endDate = "Noviembre 2020",
+                urlCetificate = "ed.team/premium?cupon=",
+                urlImage = "https://edteam-media.s3.amazonaws.com/blogs/original/75323425-9ed9-4484-b072-18005273c806.jpg",
+                typeOfCertificate = TypeOfCertificate.Edteam
+            },
+               new Certificates
+            {
+                id = 6,
+                nameCertificate = "C# desde Cero",
+                endDate = "Enero 2023",
+                urlCetificate = "https://ed.team/premium?cupon=REF-184946",
+                urlImage = "https://edteam-media.s3.amazonaws.com/blogs/original/75323425-9ed9-4484-b072-18005273c806.jpg",
+                typeOfCertificate = TypeOfCertificate.Edteam
+            },
         };
 
 
@@ -58,6 +75,17 @@ namespace Mi_portafolio.Controllers
         {
             var certifiate = listCertificates
                         .Where(c => c.typeOfCertificate == (TypeOfCertificate.Udemy))
+                        .ToList();
+            return certifiate;
+
+        }
+
+        [HttpGet]
+        [Route("api/GetCertificateEdteam")]
+        public async Task<ActionResult<IEnumerable<Certificates>>> GetCertificateEdteam()
+        {
+            var certifiate = listCertificates
+                        .Where(c => c.typeOfCertificate == (TypeOfCertificate.Edteam))
                         .ToList();
             return certifiate;
 
